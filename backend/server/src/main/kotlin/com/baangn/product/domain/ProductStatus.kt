@@ -6,5 +6,6 @@ enum class ProductStatus(val description: String){
     FOR_SALE("판매중"),
     SOLD_OUT("거래완료"),
     RESERVED("예약중"),
-    DELETED("삭제")
+    DELETED("삭제"),
+    REVIEWED("리뷰완료")
 }

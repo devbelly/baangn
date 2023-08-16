@@ -1,9 +1,8 @@
 package com.baangn.product.domain
 
+import com.support.domain.BaseRootEntity
 import com.support.domain.Location
 import com.support.domain.Money
-import com.support.domain.BaseEntity
-import com.support.domain.BaseRootEntity
 import javax.persistence.*
 
 /**
@@ -83,6 +82,12 @@ class Product(
 
     val categoryIds: List<Long>
         get() = _categoryIds
+
+    val soldOut: Boolean
+        get() = status == ProductStatus.FOR_SALE
+
+    val reviewed: Boolean
+        get() = status == ProductStatus.REVIEWED
 
     fun addCategory(categoryId: Long) {
         check(_categoryIds.size <= 3) { "카테고리는 최대 셋까지만" }
