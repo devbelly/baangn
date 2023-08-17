@@ -1,5 +1,6 @@
 package com.baangn.review.domain
 
+import com.support.domain.BaseEntity
 import javax.persistence.Column
 import javax.persistence.Entity
 
@@ -14,4 +15,8 @@ class Review(
 
     @Column(nullable=false)
     val productId: Long,
-)
+
+    id: Long = 0L
+): BaseEntity(id){
+    
+}

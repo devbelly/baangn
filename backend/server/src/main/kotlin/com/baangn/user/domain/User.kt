@@ -1,26 +1,29 @@
 package com.baangn.user.domain
 
+import com.support.domain.BaseEntity
 import javax.persistence.*
 
 
 @Entity
 @Table
-data class User(
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
-
-    @Column
+class User(
+    @Column(nullable = false)
     val oauthId: Long,
 
-    @Column(length = 20)
-    val nickname: String? = null,
+    nickname: String = "익명",
 
-    @Embedded
-    val location: Location? = null,
+    location: Location? = null,
 
     @Column(length = 250)
     val profileUrl: String? = null,
-)
+    id : Long = 0L
+):BaseEntity(id){
+
+    @Column(length = 20)
+    var nickname : String = nickname
+        private set
+
+
+}
 
 

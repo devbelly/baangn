@@ -23,6 +23,8 @@ dependencies{
     implementation(libs.coroutines.jdk8)
 
     implementation(libs.bundles.feign)
+    implementation(libs.bundles.jwt)
+
     // https://mvnrepository.com/artifact/javax.validation/validation-api
     implementation("javax.validation:validation-api:2.0.1.Final")
 

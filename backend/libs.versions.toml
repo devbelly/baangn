@@ -50,10 +50,16 @@ feign-kotlin = { module = "io.github.openfeign:feign-kotlin", version.ref = "ope
 feign-form = { module = "io.github.openfeign.form:feign-form", version = "3.8.0" }
 feign-okhttp = { module = "io.github.openfeign:feign-okhttp", version = "12.4" }
 
+# jwt
+jjwt-api = { module = "io.jsonwebtoken:jjwt-api", version = "0.11.2" }
+jjwt-impl = { module = "io.jsonwebtoken:jjwt-impl", version = "0.11.2" }
+jjwt-jackson = { module = "io.jsonwebtoken:jjwt-jackson", version = "0.11.2" }
+
 coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version = "1.6.4" }
 
 [bundles]
 feign = ["feign-core", "feign-slf4j", "feign-jackson", "feign-form", "feign-kotlin", "feign-okhttp"]
+jwt = ["jjwt-api", "jjwt-impl", "jjwt-jackson"]
 
 [plugins]
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
