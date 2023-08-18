@@ -6,3 +6,8 @@ data class RegisterUserRequest(
     @field:NotBlank
     val accessToken: String
 )
+
+data class LoginUserRequest(
+    @field:NotBlank
+    val accessToken: String
+)

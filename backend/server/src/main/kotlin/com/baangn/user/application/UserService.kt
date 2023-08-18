@@ -9,19 +9,17 @@ import javax.transaction.Transactional
 @Transactional
 @Service
 class UserService(
-    private val userSelector: UserSelector
+    private val userSelector: UserSelector,
     private val userRepository: UserRepository
 ) {
 
-    fun create(oauthId: Long){
+    fun create(oauthId: Long) : Long{
         check(!userSelector.existsByOAuthId(oauthId)) { "이미 가입된 회원입니다. oauthId: $oauthId" }
 
-        userRepository.save(User(oauthId))
+        return userRepository.save(User(oauthId)).id
     }
 
     fun getByOauthId(oauthId: Long): User{
         return userSelector.findByOAuthId(oauthId) ?: throw IllegalArgumentException("회원이 존재하지 않습니다. oauthId: $oauthId")
     }
-
-
 }

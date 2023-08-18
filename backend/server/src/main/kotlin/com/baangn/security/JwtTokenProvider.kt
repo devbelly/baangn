@@ -16,6 +16,9 @@ class JwtTokenProvider(
     private val signingKey: SecretKey = Keys.secretKeyFor(SignatureAlgorithm.HS256),
     private val expirationInMilliseconds: Long = TWELVE_HOURS_IN_MILLISECONDS
 ) {
+    /**
+     * payload는 oauthId를 담고 있습니다.
+     */
     fun createToken(payload: String): String {
         val claims: Claims = Jwts.claims().setSubject(payload)
         val now = Date()

@@ -15,19 +15,22 @@ interface KakaoFeign {
     @RequestLine("GET $LOGIN_PATH")
     fun getUserInfo(
         @Param("accessToken") accessToken: String
-    ): OAuthResponse.LoginResponse
+    ): OAuthResponse
 
     @Headers(value = ["Authorization: Bearer {accessToken}"])
     @RequestLine("POST $LOGOUT_PATH")
     fun logout(
         @Param("accessToken") accessToken: String
-    ): OAuthResponse.LogoutResponse
+    ): Unit
 }
 
 @Component
 class KakaoFeignClient(
     private val kakaoFeign: KakaoFeign
 ) {
-    fun getUserInfo(loginRequest: OAuthRequest.LoginRequest): OAuthResponse.LoginResponse =
-        kakaoFeign.getUserInfo(loginRequest.accessToken)
+    fun getUserInfo(accessToken: String): OAuthResponse =
+        kakaoFeign.getUserInfo(accessToken)
+
+    fun logout(accessToken: String): Unit =
+        kakaoFeign.logout(accessToken)
 }
