@@ -3,6 +3,7 @@ package com.baangn.product.application
 import com.baangn.product.domain.*
 import com.support.domain.Money
 import org.springframework.stereotype.Service
+import java.util.*
 import javax.transaction.Transactional
 
 /**
@@ -21,7 +22,7 @@ class ProductService(
         val productImages = ProductImages(
             request.images.map {
                 ProductImage(
-                    url = it.url
+                    url = UUID.randomUUID().toString() + it.url
                 )
             }.toMutableList()
         )
@@ -35,7 +36,7 @@ class ProductService(
             money = Money.krw(request.money),
             productImages = productImages,
             categoryIds = request.categoryIds
-        ).also {  }
+        )
 
         product.updateThumbnailImage()
 

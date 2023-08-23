@@ -15,7 +15,7 @@ class Manner(
     @Column(nullable = false)
     val productId: Long,
 
-    compliment: MannerCompliment,
+    compliment: MannerCompliment = MannerCompliment(),
     id :Long = 0L
 ): BaseEntity(id){
 

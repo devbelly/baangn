@@ -6,7 +6,7 @@ import javax.persistence.*
 class MannerCompliment(
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    val type: ComplimentType,
+    val type: ComplimentType = ComplimentType.NONE,
 
     // TODO 추후 EAGER LAZY 비교
     @ElementCollection(fetch = FetchType.EAGER)

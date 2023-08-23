@@ -34,9 +34,9 @@ data class ProductResponse(
 }
 
 data class ImageData(
-    @field:Pattern(
-        regexp = "^(http(s?):)([/|.|\\w|\\s|-])*\\.(?:jpg|gif|png)\$",
-        message = "올바른 형식의 이미지 URL이어야 합니다"
-    )
+//    @field:Pattern(
+//        regexp = "^(http(s?):)([/|.|\\w|\\s|-])*\\.(?:jpg|gif|png)\$",
+//        message = "올바른 형식의 이미지 URL이어야 합니다"
+//    )
     val url: String
 )
