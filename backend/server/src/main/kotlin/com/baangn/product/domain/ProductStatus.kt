@@ -1,7 +1,7 @@
 package com.baangn.product.domain
 
 
-enum class ProductStatus(val description: String){
+enum class ProductStatus(val status: String){
     HIDE("숨기기"),
     FOR_SALE("판매중"),
     SOLD_OUT("거래완료"),

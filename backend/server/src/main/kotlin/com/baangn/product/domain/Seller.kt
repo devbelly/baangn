@@ -8,8 +8,6 @@ import javax.persistence.Embeddable
 @Embeddable
 class Seller(
 
-    @AttributeOverrides(
-        AttributeOverride(name = "id", column = Column(name = "seller_id"))
-    )
+
     val id: Long,
 )

@@ -15,9 +15,15 @@ import javax.persistence.*
 @Table
 class Product(
     @Embedded
+    @AttributeOverrides(
+        AttributeOverride(name = "id", column = Column(name = "seller_id"))
+    )
     val seller: Seller,
 
     @Embedded
+    @AttributeOverrides(
+        AttributeOverride(name = "id", column = Column(name = "buyer_id"))
+    )
     val buyer: Buyer? = null,
 
     status: ProductStatus = ProductStatus.FOR_SALE,
@@ -76,7 +82,7 @@ class Product(
     @ElementCollection(fetch = FetchType.LAZY)
     @CollectionTable(
         name = "product_category",
-        joinColumns = [JoinColumn(name = "product_id")]
+        joinColumns = [JoinColumn(name = "category_id")]
     )
     private val _categoryIds: MutableList<Long> = categoryIds.toMutableList()
 

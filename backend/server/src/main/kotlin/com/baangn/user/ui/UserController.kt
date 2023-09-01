@@ -2,16 +2,18 @@ package com.baangn.user.ui
 
 import com.baangn.infra.kakao.KakaoFeignClient
 import com.baangn.infra.kakao.OAuthLogoutRequest
+import com.baangn.infra.presigner.PresignerUtils
+import com.baangn.security.LoginUser
 import com.baangn.user.application.UserAuthenticationService
 import com.baangn.user.application.UserService
+import com.baangn.user.application.dto.EditUserRequest
 import com.baangn.user.application.dto.LoginUserRequest
 import com.baangn.user.application.dto.RegisterUserRequest
+import com.baangn.user.application.dto.UserResponse
+import com.baangn.user.domain.User
 import com.support.ui.ApiResponse
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
 
 @RequestMapping("/api/users")
@@ -19,7 +21,8 @@ import javax.validation.Valid
 class UserController(
     private val userService: UserService,
     private val userAuthenticationService: UserAuthenticationService,
-    private val kakaoFeignClient: KakaoFeignClient
+    private val kakaoFeignClient: KakaoFeignClient,
+    private val presignerUtils: PresignerUtils,
 ) {
     /**
      * 회원가입 시 JWT 토큰은 돌려줄 필요가 없다.
@@ -46,5 +49,26 @@ class UserController(
         return ResponseEntity.noContent().build()
     }
 
+    @PutMapping("/information")
+    fun editInformation(
+        @RequestBody @Valid request: EditUserRequest,
+        @LoginUser user: User
+    ): ResponseEntity<Unit> {
+        userService.edit(user.id, request)
+        return ResponseEntity.noContent().build()
+    }
 
+    @GetMapping("/me")
+    suspend fun getMyInformation(@LoginUser user: User): ResponseEntity<ApiResponse<UserResponse>> {
+        val response = userService.getUserInformation(user.id)
+            .apply { profileUrl = profileUrl?.let { presignerUtils.getProfilePresignedGetUrl(it) } }
+        return ResponseEntity.ok(ApiResponse.success(response))
+    }
+
+    @GetMapping("/{userId}")
+    suspend fun getUserInformation(@PathVariable userId: Long): ResponseEntity<ApiResponse<UserResponse>> {
+        val response = userService.getUserInformation(userId)
+            .apply { profileUrl = profileUrl?.let { presignerUtils.getProfilePresignedGetUrl(it) } }
+        return ResponseEntity.ok(ApiResponse.success(response))
+    }
 }

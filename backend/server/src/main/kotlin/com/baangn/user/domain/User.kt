@@ -47,11 +47,12 @@ class User(
 
     fun changeProfileUrl(profileUrl: String) {
         require(profileUrl.length in 1..250) { "프로필 URL은 1자 이상 255자 이하로 입력해주세요." }
+
         this.profileUrl = profileUrl
     }
 
-    fun updateManner(manner: Double){
-        this.manner = manner
+    fun evaluateManner(manner: Double){
+        this.manner += manner
     }
 }
 
