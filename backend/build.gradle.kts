@@ -30,3 +30,15 @@ subprojects{
 		useJUnitPlatform()
 	}
 }
+
+tasks {
+	val copySecret by register<Copy>("copySecret") {
+		from("./baangn-submodule") // 서브모듈 디렉토리 경로
+		include("application*.yml") // 복사할 파일들
+		into("./server/src/main/resources") // 복사 위치
+	}
+
+	named("processResources") {
+		dependsOn(copySecret)
+	}
+}

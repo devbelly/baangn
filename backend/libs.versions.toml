@@ -57,9 +57,18 @@ jjwt-jackson = { module = "io.jsonwebtoken:jjwt-jackson", version = "0.11.2" }
 
 coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version = "1.6.4" }
 
+#validate
+validation-api = { module = "javax.validation:validation-api", version = "2.0.1.Final" }
+commons-lang3 = { module = "org.apache.commons:commons-lang3", version = "3.0" }
+commons-io = { module = "commons-io:commons-io", version = "2.11.0" }
+
+s3 = { module = "aws.sdk.kotlin:s3-jvm", version = "0.26.0-beta" }
+okhttp = { module = "com.squareup.okhttp3:okhttp", version = "5.0.0-alpha.11" }
+
 [bundles]
 feign = ["feign-core", "feign-slf4j", "feign-jackson", "feign-form", "feign-kotlin", "feign-okhttp"]
 jwt = ["jjwt-api", "jjwt-impl", "jjwt-jackson"]
+s3 = ["s3", "okhttp"]
 
 [plugins]
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }

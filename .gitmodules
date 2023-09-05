@@ -1,0 +1,3 @@
+[submodule "backend/baangn-submodule"]
+	path = backend/baangn-submodule
+	url = https://github.com/devbelly/baangn-submodule.git

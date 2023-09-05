@@ -25,16 +25,16 @@ dependencies{
     implementation(libs.bundles.feign)
     implementation(libs.bundles.jwt)
 
-    // https://mvnrepository.com/artifact/javax.validation/validation-api
-    implementation("javax.validation:validation-api:2.0.1.Final")
-    // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
-    implementation("org.apache.commons:commons-lang3:3.0")
-    // https://mvnrepository.com/artifact/commons-io/commons-io
-    implementation("commons-io:commons-io:2.11.0")
+    implementation(libs.validation.api)
+    implementation(libs.commons.lang3)
+    implementation(libs.commons.io)
 
-    implementation("aws.sdk.kotlin:s3-jvm:0.26.0-beta")
-    implementation("org.apache.logging.log4j:log4j-slf4j2-impl:2.20.0")
-    implementation("com.squareup.okhttp3:okhttp:4.10.0")
-    implementation("aws.smithy.kotlin:aws-signing-crt:0.21.0")
+    implementation(libs.bundles.s3)
+
+    testImplementation(libs.spring.boot.starter.test)
+    testImplementation(libs.mockk)
+    testImplementation(libs.springmockk)
+    testImplementation(libs.spring.boot.starter.web)
+
     kapt(libs.spring.boot.configuration.processor)
 }

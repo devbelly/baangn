@@ -5,6 +5,7 @@ import feign.Param
 import feign.RequestLine
 import org.springframework.stereotype.Component
 
+
 interface KakaoFeign {
     companion object {
         const val LOGIN_PATH = "/v2/user/me"
@@ -12,7 +13,7 @@ interface KakaoFeign {
     }
 
     @Headers(value = ["Authorization: Bearer {accessToken}"])
-    @RequestLine("GET $LOGIN_PATH")
+    @RequestLine("POST $LOGIN_PATH")
     fun getUserInfo(
         @Param("accessToken") accessToken: String
     ): OAuthResponse
