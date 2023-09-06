@@ -32,7 +32,6 @@ dependencies{
     implementation(libs.bundles.s3)
 
     testImplementation(libs.spring.boot.starter.test)
-    testImplementation(libs.mockk)
     testImplementation(libs.springmockk)
     testImplementation(libs.spring.boot.starter.web)
 

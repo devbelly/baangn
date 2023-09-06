@@ -35,7 +35,7 @@ spring-boot-starter-oauth2-client = { module = "org.springframework.boot:spring-
 spring-web = { module = "org.springframework:spring-web" }
 
 #test
-mockk = { module = "io.mockk:mockk", version = "1.13.4" }
+#mockk = { module = "io.mockk:mockk", version = "1.13.4" }
 springmockk = { module = "com.ninja-squad:springmockk", version = "4.0.2" }
 reactor-test = { module = "io.projectreactor:reactor-test" }
 
