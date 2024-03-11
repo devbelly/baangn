@@ -9,6 +9,7 @@ import org.springframework.boot.runApplication
 @ConfigurationPropertiesScan
 class ServerKtApplication
 
+
 fun main(args: Array<String>) {
     runApplication<ServerKtApplication>(*args)
 }
